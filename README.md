@@ -5,15 +5,14 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发模式
+# 修改config/index.js中module.exports对象的dev对象进行配置
 npm run dev
 
-# build for production with minification
+# 生产模式
+# 修改config/index.js中module.exports对象的build对象进行配置
+# 会在根目录下生成dist文件夹用于部署
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
