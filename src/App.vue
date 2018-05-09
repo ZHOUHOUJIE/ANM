@@ -37,6 +37,7 @@
   .wyfx-fullH {
     height: 100%;
   }
+
   .wyfx-fullW {
     width: 100%;
   }
@@ -76,6 +77,11 @@
     width: calc(100% - 20px);
     height: calc(100% - 56px);
     overflow: auto;
+  }
+
+  .wyfx-table {
+    border-top: 1px solid #ebeef5;
+    margin-bottom: 10px;
   }
 
 </style>

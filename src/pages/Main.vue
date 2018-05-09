@@ -14,7 +14,7 @@
             <i class="iconfont icon-xinxiguanlian wyfx-nav-icon"></i>
             <span slot="title">首页</span>
           </el-menu-item>
-          <el-menu-item index="2">
+          <el-menu-item index="/main/anonymous-traffic">
             <i class="iconfont icon-saomiao wyfx-nav-icon"></i>
             <span slot="title">匿名流量识别</span>
           </el-menu-item>
