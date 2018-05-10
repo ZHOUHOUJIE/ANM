@@ -25,7 +25,6 @@
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
     height: 100%;
-    overflow-x: auto;
     min-width: 1360px;
   }
 
@@ -76,7 +75,7 @@
     padding: 10px;
     width: calc(100% - 20px);
     height: calc(100% - 56px);
-    overflow: auto;
+    overflow-y: auto;
   }
 
   .wyfx-table {

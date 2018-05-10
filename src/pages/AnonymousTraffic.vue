@@ -120,13 +120,13 @@
         tableSelected: [],
         tableData1: [],
         currentPage1: 1,
-        pageSizes1: [6, 20, 50, 100],
-        pageSize1: 6,
+        pageSizes1: [10, 20, 50, 100],
+        pageSize1: 10,
         total1: 0,
         tableData2: [],
         currentPage2: 1,
-        pageSizes2: [6, 20, 50, 100],
-        pageSize2: 6,
+        pageSizes2: [10, 20, 50, 100],
+        pageSize2: 10,
         total2: 0,
         content_show: true
       }

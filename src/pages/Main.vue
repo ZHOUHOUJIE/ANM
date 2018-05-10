@@ -18,11 +18,7 @@
             <i class="iconfont icon-saomiao wyfx-nav-icon"></i>
             <span slot="title">匿名流量识别</span>
           </el-menu-item>
-          <el-menu-item index="3">
-            <i class="iconfont icon-icon- wyfx-nav-icon"></i>
-            <span slot="title">流量镜像</span>
-          </el-menu-item>
-          <el-menu-item index="4">
+          <el-menu-item index="/main/sensitive-ip">
             <i class="iconfont icon-icon-41 wyfx-nav-icon"></i>
             <span slot="title">敏感IP管理</span>
           </el-menu-item>

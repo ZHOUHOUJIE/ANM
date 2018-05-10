@@ -4,6 +4,7 @@ import Main from '@/pages/Main'
 import Home from '@/pages/Home'
 import error from '@/pages/Error'
 import AnonymousTraffic from '@/pages/AnonymousTraffic'
+import SensitiveIP from '@/pages/SensitiveIP'
 
 Vue.use(Router)
 
@@ -24,6 +25,10 @@ export default new Router({
         path: 'anonymous-traffic',
         name: 'AnonymousTraffic',
         component: AnonymousTraffic
+      },{
+        path: 'sensitive-ip',
+        name: 'SensitiveIP',
+        component: SensitiveIP
       }]
     },
     {

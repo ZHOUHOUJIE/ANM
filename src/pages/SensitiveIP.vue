@@ -1,14 +1,14 @@
 <template>
   <div class="wyfx-full">
     <div class="wyfx-topBar clearfix">
-      <div class="wyfx-topBar-title fl">首页</div>
+      <div class="wyfx-topBar-title fl">敏感IP管理</div>
     </div>
     <div class="wyfx-content">
       <el-row :gutter="20">
         <el-col :span="12">
           <div class="wyfx-chart-wrap">
             <div class="wyfx-chart-title">
-              各类型匿名IP个数
+              敏感IP各类型流量总量
             </div>
             <div class="wyfx-chart" id="chart1"></div>
           </div>
@@ -16,7 +16,7 @@
         <el-col :span="12">
           <div class="wyfx-chart-wrap">
             <div class="wyfx-chart-title">
-              各类型匿名IP占比
+              敏感IP各类型流量占比
             </div>
             <div class="wyfx-chart" id="chart2"></div>
           </div>
@@ -26,9 +26,32 @@
         <el-col :span="24">
           <div class="wyfx-chart-wrap nm">
             <div class="wyfx-chart-title">
-              每月匿名流量趋势
+              敏感IP管理
             </div>
-            <div class="wyfx-chart b" id="chart3"></div>
+            <div class="wyfx-chart b">
+              <div class="clearfix wyfx-table-bar">
+                <el-button type="primary" size="small" class="fr">添加</el-button>
+                <el-input v-model="addInput" placeholder="请输入敏感IP" size="small" class="fr wyfx-add-input"></el-input>
+              </div>
+              <el-table :data="tableData" class="wyfx-table">
+                <el-table-column prop="date" label="敏感IP">
+                </el-table-column>
+                <el-table-column prop="name" label="常用匿名软件">
+                </el-table-column>
+                <el-table-column prop="name" label="最常访问网站">
+                </el-table-column>
+                <el-table-column prop="name" label="操作">
+                  <template slot-scope="scope">
+                    <el-button size="mini" type="text">删除</el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
+              <div class="clearfix">
+                <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="pageSizes"
+                  :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total" class="fr">
+                </el-pagination>
+              </div>
+            </div>
           </div>
         </el-col>
       </el-row>
@@ -43,7 +66,12 @@
       return {
         chart1: '',
         chart2: '',
-        chart3: ''
+        addInput: '',
+        tableData: [],
+        currentPage: 1,
+        pageSizes: [10, 20, 50, 100],
+        pageSize: 10,
+        total: 0,
       }
     },
     methods: {
@@ -118,75 +146,21 @@
             }
           }]
         });
-        this.chart3.setOption({
-          tooltip: {
-            trigger: 'axis'
-          },
-          legend: {
-            data: ['Freegate', 'l2tp', 'pptp', 'shadowsocks', 'tor', 'TorWitdSSL', 'ultrasurf']
-          },
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [{
-              name: 'Freegate',
-              type: 'line',
-              data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-              name: 'l2tp',
-              type: 'line',
-              data: [220, 182, 191, 234, 290, 330, 310]
-            },
-            {
-              name: 'pptp',
-              type: 'line',
-              data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-              name: 'shadowsocks',
-              type: 'line',
-              data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-              name: 'tor',
-              type: 'line',
-              data: [820, 932, 901, 934, 1290, 1330, 1320]
-            },
-            {
-              name: 'TorWitdSSL',
-              type: 'line',
-              data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-              name: 'ultrasurf',
-              type: 'line',
-              data: [120, 132, 101, 134, 90, 230, 210]
-            }
-          ]
-        });
+      },
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
       }
     },
     mounted() {
       const vm = this;
       this.chart1 = echarts.init(document.getElementById('chart1'));
       this.chart2 = echarts.init(document.getElementById('chart2'));
-      this.chart3 = echarts.init(document.getElementById('chart3'));
       window.onresize = function () {
         vm.chart1.resize();
         vm.chart2.resize();
-        vm.chart3.resize();
       }
       this.renderChart();
     }
@@ -202,7 +176,8 @@
   }
 
   .wyfx-chart.b {
-    height: 400px;
+    height: auto;
+    padding: 10px;
   }
 
   .wyfx-chart-title {
@@ -216,6 +191,15 @@
 
   .wyfx-chart-wrap.nm {
     margin-bottom: 0;
+  }
+
+  .wyfx-add-input {
+    width: 200px;
+    margin-right: 5px;
+  }
+
+  .wyfx-table-bar {
+    margin: 0 10px 10px 10px;
   }
 
 </style>
